@@ -59,9 +59,9 @@ body{
 .btn:hover{
     background-color: rgb(243, 190, 110);
 }
-.gameOver{
+/* .gameOver{
     font-size: 200px;
     color: red;
     font-weight: 400;
     font-family: "Spicy Rice", serif;
-}
+} */

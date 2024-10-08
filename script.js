@@ -8,24 +8,20 @@ const ctx = canvas.getContext('2d');
 var WIDTH = canvas.width = 900;
 var HEIGHT = canvas.height = 600;
 
-var gameStarted = false;
-
-
 var colorArray = [
     'blue',
     'green',
     'red'
 ]
+
 var maxRad = 40;
 var minRad = 5;
 var lives = 3;
 var score = 0;
 var gameOver = false;
+var gameStarted = false;
 
-var mouse = {
-    x: undefined,
-    y: undefined
-}
+
 
 startButton.addEventListener('click', startGame);
 resetButton.addEventListener('click', resetGame);
@@ -39,13 +35,19 @@ function startGame() {
     gameScreen.style.display = 'flex';
     gameStarted = true;
     gameOver = false;
-    resetGame();
     animate();
+    resetGame();
 }
 function resetGame() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    gameStarted = false;
+    gameStarted = true;
     gameOver = false;
+    lives=3;
+    score=0;
+    circleArray=[];
+    initCircles(100);
+    animate();
+    // showIntro();
 }
 
 function Circle(x, y, r, dx, dy, color) {
@@ -106,10 +108,10 @@ function Circle(x, y, r, dx, dy, color) {
             circleArray.splice(index, 1);
         }
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 2; i++) {
             var x = Math.random() * WIDTH;
-            var dx = (Math.random() - 0.5) * 2;
-            var dy = (Math.random() - 0.5) * 3;
+            var dx = (Math.random() - 0.5) * 1;
+            var dy = (Math.random() - 0.5) * 1.5;
             var y = Math.random() * HEIGHT;
             var r = Math.random() * 3 + 1;
             var color = colorArray[Math.floor(Math.random() * colorArray.length)];
@@ -118,17 +120,23 @@ function Circle(x, y, r, dx, dy, color) {
     }
 
 }
+
+var mouse = {
+    x: undefined,
+    y: undefined
+}
+
 window.addEventListener('mousemove', function (event) {
     mouse.x = event.x - canvas.offsetLeft;
     mouse.y = event.y - canvas.offsetTop;
 });
 
 var circleArray = [];
-function initCircles() {
+function initCircles(count) {
     for (var i = 0; i < count; i++) {
         var x = Math.random() * WIDTH;
-        var dx = (Math.random() - 0.5) * 2;
-        var dy = (Math.random() - 0.5) * 3;
+        var dx = (Math.random() - 0.5) * 1;
+        var dy = (Math.random() - 0.5) * 1.5;
         var y = Math.random() * HEIGHT;
         var r = Math.random() * 3 + 1;
         var color = colorArray[Math.floor(Math.random() * colorArray.length)];
@@ -136,6 +144,29 @@ function initCircles() {
     }
 }
 
-initCircles(200);
 
+function animate() {
+    if (gameOver) {
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        ctx.fillStyle = 'rgb(255, 153, 0)';
+        ctx.font = "100px Spicy Rice";
+        ctx.fillText("Game Over", WIDTH / 2 - 255, HEIGHT / 2);
+        ctx.fillText("Score: " + score, WIDTH / 2 -255, HEIGHT / 2 + 100);
+        return;
+    }
+
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+    ctx.fillStyle = 'black';
+    ctx.font = "20px Spicy Rice" ;
+    ctx.fillText("Lives: " + lives, 20, 40);
+    ctx.fillText("Score: " + score, WIDTH - 120, 40);
+
+    for (var i = 0; i < circleArray.length; i++) {
+        circleArray[i].update();
+    }
+}
 showIntro();
+initCircles(100);
+animate();

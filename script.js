@@ -43,4 +43,22 @@ function resetGame(){
     gameOver = false;
 }
 
+function Circle(x, y, r, dx, dy, color) {
+    this.x = x;
+    this.y = y;
+    this.dy = dy;
+    this.dx = dx;
+    this.r = r;
+    this.color = color;
+    this.blasted = false;
+    this.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+        ctx.strokeStyle = 'white';
+        ctx.stroke();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+
+}
 showIntro();

@@ -26,3 +26,21 @@ body{
     justify-content: space-between;
 
 }
+canvas{
+    border: 3px solid black;
+    background-image: url(assets/istockphoto-1253446472-612x612.jpg);
+}
+.instructions{
+    margin-left: 20px;
+    width: 200px;
+}
+.btn{
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgb(255, 153, 0);
+    border: none;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(243, 190, 110);
+}

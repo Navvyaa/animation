@@ -20,7 +20,7 @@ var lives = 3;
 var score = 0;
 var gameOver = false;
 var gameStarted = false;
-
+const defaultSpeed=1.5;
 
 
 startButton.addEventListener('click', startGame);
@@ -35,10 +35,10 @@ function startGame() {
     gameScreen.style.display = 'flex';
     gameStarted = true;
     gameOver = false;
-    animate();
     resetGame();
 }
 function resetGame() {
+    cancelAnimationFrame(animate);
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
     gameStarted = true;
     gameOver = false;
@@ -61,8 +61,8 @@ function Circle(x, y, r, dx, dy, color) {
     this.draw = function () {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
-        ctx.strokeStyle = 'black';
-        ctx.stroke();
+        // ctx.strokeStyle = 'black';
+        // ctx.stroke();
         ctx.fillStyle = this.color;
         ctx.fill();
     }
@@ -76,8 +76,8 @@ function Circle(x, y, r, dx, dy, color) {
         this.x += this.dx;
         this.y += this.dy;
         if (this.blasted) return;
-        if (mouse.x - this.x < 50 && mouse.x - this.x > -50 &&
-            mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+        if (mouse.x - this.x < 40 && mouse.x - this.x > -40 &&
+            mouse.y - this.y < 40 && mouse.y - this.y > -40) {
             if (this.r < maxRad) {
                 this.r += 1;
             }
@@ -108,7 +108,7 @@ function Circle(x, y, r, dx, dy, color) {
             circleArray.splice(index, 1);
         }
 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 5; i++) {
             var x = Math.random() * WIDTH;
             var dx = (Math.random() - 0.5) * 2;
             var dy = (Math.random() - 0.5) * 1.5;
@@ -151,7 +151,7 @@ function animate() {
         ctx.fillStyle = 'rgb(255, 153, 0)';
         ctx.font = "100px Spicy Rice";
         ctx.fillText("Game Over", WIDTH / 2 - 255, HEIGHT / 2);
-        ctx.fillText("Score: " + score, WIDTH / 2 -265, HEIGHT / 2 + 100);
+        ctx.fillText("Score: " + score, WIDTH / 2 -270, HEIGHT / 2 + 100);
         return;
     }
 

@@ -7,9 +7,9 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image:url(assets/istockphoto-1253446472-612x612.jpg) ;
+    background-image:url(assets/6530.jpg) ;
     background-size: cover;
-    backdrop-filter: 10px blur;
+    backdrop-filter: 100px blur;
 }
 .intro{
     text-align: center;
@@ -19,7 +19,6 @@ body{
     font-size: 200px;
     font-family: "Spicy Rice", serif;
     color: rgb(255, 153, 0);
-
 }
 .gameContainer{
     display: none;
@@ -30,7 +29,7 @@ body{
 #myCanvas{
     border: 3px solid black;
     border-radius: 30px;
-    background-image: url(assets/istockphoto-1253446472-612x612.jpg);
+    background-image: url(assets/6530.jpg);
     background-size: cover;
     background-position: center;
 }

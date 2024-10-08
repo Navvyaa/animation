@@ -1,5 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100&family=Spicy+Rice&display=swap');
+
 body{
     display: flex;
     margin: 0;
@@ -29,7 +29,7 @@ body{
 #myCanvas{
     border: 3px solid black;
     border-radius: 30px;
-    background-image: url(assets/6530.jpg);
+    background-image: url(assets/istockphoto-1253446472-612x612.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -58,9 +58,3 @@ body{
 .btn:hover{
     background-color: rgb(243, 190, 110);
 }
-/* .gameOver{
-    font-size: 200px;
-    color: red;
-    font-weight: 400;
-    font-family: "Spicy Rice", serif;
-} */

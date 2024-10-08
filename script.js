@@ -151,7 +151,7 @@ function animate() {
         ctx.fillStyle = 'rgb(255, 153, 0)';
         ctx.font = "100px Spicy Rice";
         ctx.fillText("Game Over", WIDTH / 2 - 255, HEIGHT / 2);
-        ctx.fillText("Score: " + score, WIDTH / 2 -270, HEIGHT / 2 + 100);
+        ctx.fillText("Score: " + score, WIDTH / 2 -260, HEIGHT / 2 + 100);
         return;
     }
 

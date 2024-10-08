@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation-Task</title>
+    <title>Pop It</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    hi
+    <div class="intro">
+        <h1>POP IT</h1>
+        <button class="btn" id="startBtn">START</button>
+        <button class="btn" id="restartBtn">RESTART</button>
+    </div>
+
+    <div class="gameContainer" id="gamescreen">
+        <canvas id="myCanvas"></canvas>
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>Click on blue and green balls to pop them:</p>
+            <ul>
+                <li>Blue: +10 points</li>
+                <li>Green: +20 points</li>
+            </ul>
+            <p>Avoid red balls! If a red ball pops, you lose a life.</p>
+            <p>Three red pops = Game Over!</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="intro">
+    <div class="intro" id="introScreen">
         <h1>POP  IT</h1>
         <button class="btn" id="startBtn">START</button>
-        <button class="btn" id="restartBtn">RESTART</button>
+        <button class="btn" id="resetBtn">RESET</button>
     </div>
 
-    <div class="gameContainer" id="gamescreen">
+    <div class="gameContainer" id="gameScreen">
         <canvas id="myCanvas"></canvas>
         <div class="instructions">
             <h2>Instructions</h2>
@@ -22,8 +22,8 @@
                 <li>Blue: +10 points</li>
                 <li>Green: +20 points</li>
             </ul>
-            <p>Avoid red balls! If a red ball pops, you lose a life.</p>
-            <p>Three red pops = Game Over!</p>
+            <p class="warn">Avoid red balls! If a red ball pops, you lose a life.</p>
+            <p class="warn">Three red pops = Game Over!</p>
         </div>
     </div>
     <script src="script.js"></script>

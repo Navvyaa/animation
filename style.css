@@ -9,6 +9,7 @@ body{
     height: 100vh;
     background-image:url(assets/istockphoto-1253446472-612x612.jpg) ;
     background-size: cover;
+    backdrop-filter: 10px blur;
 }
 .intro{
     text-align: center;
@@ -26,13 +27,21 @@ body{
     justify-content: space-between;
 
 }
-canvas{
+#myCanvas{
     border: 3px solid black;
     background-image: url(assets/istockphoto-1253446472-612x612.jpg);
+    background-size: cover;
+    background-position: center;
 }
 .instructions{
-    margin-left: 20px;
-    width: 200px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin-left:60px;
+    width: 350px;
+}
+ .warn{
+    color: red;
+    font-weight: 900;
 }
 .btn{
     padding: 10px 20px;
@@ -43,4 +52,10 @@ canvas{
 }
 .btn:hover{
     background-color: rgb(243, 190, 110);
+}
+.gameOver{
+    font-size: 200px;
+    color: red;
+    font-weight: 400;
+    font-family: "Spicy Rice", serif;
 }

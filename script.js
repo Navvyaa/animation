@@ -110,7 +110,7 @@ function Circle(x, y, r, dx, dy, color) {
 
         for (var i = 0; i < 2; i++) {
             var x = Math.random() * WIDTH;
-            var dx = (Math.random() - 0.5) * 1;
+            var dx = (Math.random() - 0.5) * 2;
             var dy = (Math.random() - 0.5) * 1.5;
             var y = Math.random() * HEIGHT;
             var r = Math.random() * 3 + 1;
@@ -135,7 +135,7 @@ var circleArray = [];
 function initCircles(count) {
     for (var i = 0; i < count; i++) {
         var x = Math.random() * WIDTH;
-        var dx = (Math.random() - 0.5) * 1;
+        var dx = (Math.random() - 0.5) * 2;
         var dy = (Math.random() - 0.5) * 1.5;
         var y = Math.random() * HEIGHT;
         var r = Math.random() * 3 + 1;
@@ -151,7 +151,7 @@ function animate() {
         ctx.fillStyle = 'rgb(255, 153, 0)';
         ctx.font = "100px Spicy Rice";
         ctx.fillText("Game Over", WIDTH / 2 - 255, HEIGHT / 2);
-        ctx.fillText("Score: " + score, WIDTH / 2 -255, HEIGHT / 2 + 100);
+        ctx.fillText("Score: " + score, WIDTH / 2 -265, HEIGHT / 2 + 100);
         return;
     }
 

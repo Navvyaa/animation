@@ -3,6 +3,7 @@ const introScreen = document.getElementById('introScreen');
 const gameScreen = document.getElementById('gameScreen');
 const startButton = document.getElementById('startBtn');
 const resetButton = document.getElementById('resetBtn');
+const homeButton = document.getElementById('homeBtn');
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 var WIDTH = canvas.width = 900;
@@ -14,23 +15,26 @@ var colorArray = [
     'red'
 ]
 
+let animationId;
 var maxRad = 40;
 var minRad = 5;
 var lives = 3;
 var score = 0;
 var gameOver = false;
 var gameStarted = false;
-const defaultSpeed=1.5;
 
 
 startButton.addEventListener('click', startGame);
 resetButton.addEventListener('click', resetGame);
+homeButton.addEventListener('click',showIntro);
 
 function showIntro() {
     introScreen.style.display = 'block';
     gameScreen.style.display = 'none';
 }
+
 function startGame() {
+    cancelAnimationFrame(animationId);
     introScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
     gameStarted = true;
@@ -38,14 +42,14 @@ function startGame() {
     resetGame();
 }
 function resetGame() {
-    cancelAnimationFrame(animate);
+    cancelAnimationFrame(animationId);
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
     gameStarted = true;
     gameOver = false;
     lives=3;
     score=0;
     circleArray=[];
-    initCircles(100);
+    initCircles(150);
     animate();
     // showIntro();
 }
@@ -61,8 +65,6 @@ function Circle(x, y, r, dx, dy, color) {
     this.draw = function () {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
-        // ctx.strokeStyle = 'black';
-        // ctx.stroke();
         ctx.fillStyle = this.color;
         ctx.fill();
     }
@@ -111,7 +113,7 @@ function Circle(x, y, r, dx, dy, color) {
         for (var i = 0; i < 5; i++) {
             var x = Math.random() * WIDTH;
             var dx = (Math.random() - 0.5) * 2;
-            var dy = (Math.random() - 0.5) * 1.5;
+            var dy = (Math.random() - 0.5) * 2;
             var y = Math.random() * HEIGHT;
             var r = Math.random() * 3 + 1;
             var color = colorArray[Math.floor(Math.random() * colorArray.length)];
@@ -136,7 +138,7 @@ function initCircles(count) {
     for (var i = 0; i < count; i++) {
         var x = Math.random() * WIDTH;
         var dx = (Math.random() - 0.5) * 2;
-        var dy = (Math.random() - 0.5) * 1.5;
+        var dy = (Math.random() - 0.5) * 2;
         var y = Math.random() * HEIGHT;
         var r = Math.random() * 3 + 1;
         var color = colorArray[Math.floor(Math.random() * colorArray.length)];
@@ -155,7 +157,7 @@ function animate() {
         return;
     }
 
-    requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
     ctx.fillStyle = 'black';
@@ -168,5 +170,5 @@ function animate() {
     }
 }
 showIntro();
-initCircles(100);
+initCircles(150);
 animate();

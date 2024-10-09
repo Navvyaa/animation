@@ -63,7 +63,6 @@ function resetGame() {
     circleArray=[];
     initCircles(150);
     animate();
-    // showIntro();
 }
 
 function Circle(x, y, r, dx, dy, color) {
@@ -120,7 +119,9 @@ function Circle(x, y, r, dx, dy, color) {
         }
 
         if (lives <= 0) {
-            gameOverSound.play();
+            setTimeout(function(){
+                gameOverSound.play();
+            },700);
             gameOver = true;
         }
         var index = circleArray.indexOf(this);

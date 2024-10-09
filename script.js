@@ -1,3 +1,6 @@
+const buttonSound=new Audio('assets/click.wav');
+const gameOverSound=new Audio('assets/gameOver.mp3');
+
 
 const introScreen = document.getElementById('introScreen');
 const gameScreen = document.getElementById('gameScreen');
@@ -24,9 +27,18 @@ var gameOver = false;
 var gameStarted = false;
 
 
-startButton.addEventListener('click', startGame);
-resetButton.addEventListener('click', resetGame);
-homeButton.addEventListener('click',showIntro);
+startButton.addEventListener('click', function(){
+    buttonSound.play();
+    startGame();
+});
+resetButton.addEventListener('click', function(){
+    buttonSound.play();
+    resetGame();
+});
+homeButton.addEventListener('click',function(){
+    buttonSound.play();
+    showIntro();
+});
 
 function showIntro() {
     introScreen.style.display = 'block';
@@ -94,15 +106,21 @@ function Circle(x, y, r, dx, dy, color) {
         this.draw();
     }
     this.blast = function () {
+        let pop = new Audio('assets/pop.wav');
+        let wrong = new Audio('assets/wrong.mp3');
         if (this.color === 'blue') {
             score += 10;
+            pop.play(); 
         } else if (this.color === 'green') {
             score += 20;
+            pop.play(); 
         } else if (this.color === 'red') {
+            wrong.play();
             lives -= 1;
         }
 
         if (lives <= 0) {
+            gameOverSound.play();
             gameOver = true;
         }
         var index = circleArray.indexOf(this);
